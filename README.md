@@ -16,7 +16,7 @@ About the Files:
 
 	-- Promotech-CNN-20210720.h5 - H5 module built from the trained network. This is loaded during predictions
 	-- PromotechCNN.py	- Base Class module that is used to build and train a netwok if required. It handles promoter sequence conversion before they are fed into the Neural Network. The main prediction method is processed here.
-	-- PromotechCNNPedict.py - Main file to load CNN module and run predictions on the input file
+	-- PromotechCNNPredict.py - Main file to load CNN module and run predictions on the input file
 
 Making Predictions:
 - Predictions are made after loading the H5 data file and then running the prediction on an input promoter sequence file.
