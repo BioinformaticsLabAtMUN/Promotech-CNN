@@ -18,14 +18,14 @@ About the Files:
 	-- PromotechCNN.py	- Base Class module that is used to build and train a netwok if required. It handles promoter sequence conversion before they are fed into the Neural Network. The main prediction method is processed here.
 	-- PromotechCNNPredict.py - Main file to load CNN module and run predictions on the input file
 
-Making Predictions:
+## Making Predictions:
 - Predictions are made after loading the H5 data file and then running the prediction on an input promoter sequence file.
 
 		-- You may run predictions on fasta files or files with only one 40nt sequence per line.
 			python PromotechCNNPredict.py Promotech-CNN-20210720.h5 negative.fasta
 
 
-Training the Network from Scratch:
+## Training the Network from Scratch:
 - The model was built for training on a Linux environment, you may change line 115 and 116 to run on Windows - the '/' should be switched to '\\'.
 - If you intend to rebuild the network from scratch, you may run the commands below - this is ideal for new training data.
 
