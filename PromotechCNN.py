@@ -130,11 +130,12 @@ class PromotechCNN:
             for line in inputLines:
 
                 #Check to be sure the line is valid
-                if(line[0] != '>'):
+                if(line[0] != '>' and not line.isspace()):
 
                     #Clear list to remove any extra character
                     if(len(line) > 40):
                         line = line.strip('\n')
+                        line = line.upper()
                         #print(line)
 
                         #Convert the Sequence to 4by40 one-hot array
@@ -145,6 +146,8 @@ class PromotechCNN:
                         if(len(line)>0):
                             Data_X.append(line)
                             Data_Y.append(val)
+                        else:
+                            print("Sequence couldn't be hot encoded:", line)
 
         return [Data_X, Data_Y]
 
@@ -244,20 +247,23 @@ class PromotechCNN:
             for line in inputLines:
 
                 #Check to be sure the line is valid
-                if(line[0] != '>'):
-
+                if(line[0] != '>' and not line.isspace()):
+                    #print("Processing", line)
                     #Clear list to remove any extra character
                     if(len(line) > 40):
                         line = line.strip('\n')
+                        line = line.upper()
 
                         #Convert the Sequence to 4by40 one-hot array
                         lineConv = self.convertToOneHot(list(line))
 
                         #Returned data is fine and has no error in the sequence
                         #If there was an error in the sequence then the return is empty
-                        if(len(line)>0):
+                        if(len(lineConv)>0):
                             inputDataConverted.append(lineConv)
                             inputDataSequence.append(line)
+                        else:
+                            print("Sequence couldn't be hot encoded:", line)
 
         predicted_action = self.model.predict(np.array(inputDataConverted))
         return [inputDataSequence, predicted_action]
